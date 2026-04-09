@@ -59,7 +59,7 @@ Deployed at `auth.nobulai.tools`. Self-hosters use their own domain.
 
 ## Conventions
 
-- No custom cryptography. Standard libraries only (`jose`, `otpauth`, `age`).
+- Cryptographic infrastructure builds on axit (aitools encrypted transport — axit-lock, axit-sign, axit-keys). Standard libraries (`jose`, `otpauth`, `age`) where they serve. Custom where they don't.
 - Every endpoint maps to a documented Auth0 equivalent.
 - Tests verify parity with Auth0 token claims.
 - Adapter interfaces for everything that could be swapped: providers, storage, email, hosting.

@@ -33,7 +33,7 @@ The design is documented in detail in [RFC 0022](docs/rfcs/0022-aiauth_draft.md)
 
 aiauth was born inside [aitools](https://github.com/nobul-tech/aitools) — a provenance-aware intelligence system built by [NOBUL](https://nobul.tech) ("No Bullshit Technology"). The auth problem emerged from operating multiple applications and CLI tools that all needed identity, token brokering, and MFA — without paying $9,600/year for a managed service.
 
-The production OAuth code in [vcard.nobul.tech](https://github.com/nobul-tech/qr-contact) (Google + Microsoft flows, PKCE, CSRF protection) is the seed codebase. Auth0's public API surface is the reference specification. Everything else is built from standard libraries — no custom cryptography.
+The production OAuth code in [vcard.nobul.tech](https://github.com/nobul-tech/qr-contact) (Google + Microsoft flows, PKCE, CSRF protection) is the seed codebase. Auth0's public API surface is the reference specification. Cryptographic infrastructure builds on axit (the aitools encrypted transport layer — Signal-inspired, provider-independent).
 
 ## Architecture
 
