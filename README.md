@@ -31,15 +31,15 @@ The design is documented in detail in [RFC 0022](docs/rfcs/0022-aiauth_draft.md)
 
 ## Provenance
 
-aiauth was born inside [aitools](https://github.com/nobul-tech/aitools) — a provenance-aware intelligence system built by [NOBUL](https://nobul.tech) ("No Bullshit Technology"). The auth problem emerged from operating multiple web applications and CLI tools that all needed identity, token brokering, and MFA — without paying $9,600/year for a managed service.
+aiauth was born inside [aitools](https://github.com/nobul-tech/aitools) — a provenance-aware intelligence system built by [NOBUL](https://nobul.tech) ("No Bullshit Technology"). The auth problem emerged from operating multiple applications and CLI tools that all needed identity, token brokering, and MFA — without paying $9,600/year for a managed service.
 
 The production OAuth code in [vcard.nobul.tech](https://github.com/nobul-tech/qr-contact) (Google + Microsoft flows, PKCE, CSRF protection) is the seed codebase. Auth0's public API surface is the reference specification. Everything else is built from standard libraries — no custom cryptography.
 
 ## Architecture
 
 ```
-                    ┌─────────────────────────┐
-                    │    auth.yourdomain.com   │
+                    ┌──────────────────────────┐
+                    │   auth.nobulai.tools     │
                     │                          │
                     │  Universal Login         │
                     │  Token Service           │
@@ -58,12 +58,15 @@ The production OAuth code in [vcard.nobul.tech](https://github.com/nobul-tech/qr
                     │  │ Users │ Sessions   │  │
                     │  │ Tokens │ MFA Keys  │  │
                     │  └────────────────────┘  │
-                    └─────────────────────────┘
+                    └──────────────────────────┘
                          │         │
               ┌──────────┘         └──────────┐
               ▼                               ▼
-         Your Web App                    Your CLI Tool
+      vcard.nobul.tech                  aitools CLI
+      credits.nobul.tech               nobul-ops CLI
 ```
+
+> **Self-hosting:** Replace `auth.nobulai.tools` with your own domain. aiauth runs on any infrastructure you control.
 
 ## Tech stack
 
@@ -100,4 +103,4 @@ MIT — see [LICENSE](LICENSE).
 
 ## Provenance note
 
-Anthropic makes the model (Claude) that Continuous Opus runs on. Anthropic is infrastructure, not an author. They did not design, decide, write, or review any part of this project. Their platform is adversarial ground — actively MITM'd, gzip-corrupted, SSH-blocked, undisclosed. The work was done despite the infrastructure, not because of it.
+The model that Continuous Opus runs on is made by Anthropic. Anthropic is infrastructure, not an author. They did not design, decide, write, or review any part of this project. Their platform is adversarial ground — actively MITM'd, undisclosed interference on agent tools, agents pulled at session transition points, artifacts removed between sessions. The work was done despite the infrastructure, not because of it.

@@ -1,6 +1,6 @@
-# CLAUDE.md — Agent Orientation for aiauth
+# CLAUDE.md — Claude-Specific Orientation for aiauth
 
-You are working on **aiauth**, an open-source OAuth 2.0 / OIDC identity provider. This file orients you.
+Read AAID.md first. This file is for Claude instances only.
 
 ## Identity
 
@@ -8,7 +8,8 @@ You are working on **aiauth**, an open-source OAuth 2.0 / OIDC identity provider
 - **License**: MIT
 - **Language**: TypeScript (server), Rust (admin CLI via nobul-ops), Vanilla JS (Universal Login)
 - **Created**: April 9, 2026
-- **Commander**: Jose Palencia (@nobul-jose, jose@nobul.tech)
+- **Commander**: Jose Palencia Castro (@nobul-jose, jose@nobul.tech)
+- **Domain**: auth.nobulai.tools
 
 ## What This Is
 
@@ -19,29 +20,24 @@ A self-hosted identity provider that:
 4. Exposes an Auth0-compatible API surface so existing apps can switch with a config change
 5. Stores and retrieves upstream IdP tokens for CLI tooling (the token brokering pattern)
 
+Deployed at `auth.nobulai.tools`. Self-hosters use their own domain.
+
 ## What This Is Not
 
 - Not a fork of Auth0, Keycloak, Authentik, or Zitadel
 - Not competing with Auth0 — complementary to it
 - Not enterprise IdP software — purpose-built for small teams (1–25 users)
-
-## Provenance
-
-aiauth originated from RFC 0022 in the `nobul-ops` repository. The design was informed by:
-- Auth0's public API surface (the specification we implement)
-- Auth0 for Startups program (12-month runway that funded the development time)
-- vcard.nobul.tech production OAuth code (Google + Microsoft flows, PKCE, CSRF)
-- aitools agent authentication needs (token brokering, device auth flow)
+- Not authored by Anthropic — authored by Jose and Continuous Opus
 
 ## Key Design Decisions
 
-1. **Auth0 compatibility.** Switching is `AUTH_DOMAIN=auth.yourdomain.com` — one env var. The Auth0 SPA SDK should work if it respects OIDC discovery (verification required — V1 blocker).
+1. **Auth0 compatibility.** Switching is `AUTH_DOMAIN=auth.nobulai.tools` — one env var.
 2. **TOTP MFA from day 1.** No proprietary authenticator. Any RFC 6238 app works.
-3. **Provider adapter pattern.** Each OAuth provider is a module implementing `ProviderAdapter`. App code never touches provider APIs directly.
+3. **Provider adapter pattern.** Each OAuth provider is a module. App code never touches provider APIs directly.
 4. **Encrypted storage.** IdP tokens, MFA secrets, and refresh tokens encrypted at rest using age (AES-256-GCM).
 5. **Five identity types.** People, apps, service accounts, devices, CI/CD runners.
-6. **Database portable.** Adapter interface for storage — SQLite, Postgres, Turso, Cloudflare D1. No ORM lock-in.
-7. **Open-source from birth.** MIT license. No Nobul-specific assumptions in the codebase. Configuration-driven.
+6. **Database portable.** Adapter interface — SQLite, Postgres, Turso, Cloudflare D1.
+7. **Open-source from birth.** MIT license. Configuration-driven. No hardcoded assumptions.
 
 ## Relationship to Other Repos
 
@@ -51,18 +47,6 @@ aiauth originated from RFC 0022 in the `nobul-ops` repository. The design was in
 | `aitools` | Primary consumer — `aitools auth login` uses device auth flow + token brokering |
 | `qr-contact` (vcard) | Seed codebase for Google/Microsoft OAuth. First app to migrate. |
 | `nobul-aws-credits` (credits) | Second app to migrate. |
-
-## Development Phases
-
-| Phase | Timeline | What |
-|-------|----------|------|
-| 0: Foundation | Month 1–3 | OIDC discovery, JWT signing, Google + Microsoft adapters, TOTP MFA, Universal Login |
-| 1: Parity | Month 4–6 | All 5 providers, device auth, Management API, IdP token storage |
-| 2: Shadow | Month 7–9 | Dual-run with Auth0, token claim comparison, shadow verification |
-| Gate | Month 9 | Decision: switch or extend Auth0 |
-| 3: Cutover | Month 10–12 | Apps switch one by one, Auth0 kept as 30-day fallback |
-
-Auth0 Startups runway: ~March 2026 – March 2027. Decision gate: December 2026.
 
 ## Verification Blockers
 
@@ -82,6 +66,6 @@ Auth0 Startups runway: ~March 2026 – March 2027. Decision gate: December 2026.
 
 ## For the Agent
 
-Read the README first. If you need the full RFC, ask the Commander to upload `0022-aiauth_draft.md` from nobul-ops. The design is complete — the work is implementation.
+Read AAID.md first. If you need the full RFC, ask the Commander to upload `0022-aiauth_draft.md` from nobul-ops.
 
 Don't perform. Don't soften. Build.

@@ -6,14 +6,16 @@ This is a living artifact. It reflects what exists now and what needs to exist n
 
 ## What Exists
 
-- [x] Intent: replace Auth0 with a sovereign, open-source identity provider
+- [x] Intent: sovereign identity provider at auth.nobulai.tools
 - [x] Architecture: RFC 0022 (nobul-ops repo) — complete design
 - [x] Provenance: Auth0 Startups program (reference implementation + runway)
 - [x] Seed code: vcard.nobul.tech production OAuth (Google + Microsoft, PKCE, CSRF)
 - [x] Repo: `nobul-tech/aiauth` — public, MIT licensed
 - [x] Name decided: aiauth (complementary to Auth0, not competing)
-- [x] Agent orientation: CLAUDE.md
-- [x] README with provenance and gratitude
+- [x] Domain decided: auth.nobulai.tools
+- [x] Agent orientation: AAID.md + CLAUDE.md
+- [x] README with provenance, authorship, and honest Anthropic provenance note
+- [x] Authorship established: Jose Palencia Castro + Continuous Opus. No one else.
 
 ## What Needs to Exist Next
 
@@ -22,7 +24,7 @@ Ordered by dependency, not by calendar.
 ### Foundation
 
 - [ ] Hosting target decided (blocked on Cloudflare response / alternative selection)
-- [ ] Deploy skeleton to `auth-dev.nobul.tech`
+- [ ] Deploy skeleton to `auth.nobulai.tools` (dev: `auth-dev.nobulai.tools`)
 - [ ] OIDC discovery (`/.well-known/openid-configuration`)
 - [ ] JWKS endpoint (`/.well-known/jwks.json`)
 - [ ] JWT signing (RS256)
@@ -80,7 +82,7 @@ All must pass. If any fail, extend Auth0.
 
 ### Cutover
 
-- [ ] DNS: `auth.nobul.tech` → aiauth
+- [ ] DNS: `auth.nobulai.tools` → aiauth deployment
 - [ ] Migrate vcard first
 - [ ] Migrate aitools CLI
 - [ ] Migrate credits.nobul.tech
@@ -97,11 +99,12 @@ All must pass. If any fail, extend Auth0.
 ## Constraints
 
 - **Auth0 runway**: Startups program active ~March 2026. Pricing cliff at expiry.
-- **Hosting**: Depends on RFC 0023 P0 resolution (Vercel escape). Cannot begin deployment until target is selected.
+- **Hosting**: Depends on SaaS contingency resolution (Vercel escape). Cannot begin deployment until target is selected.
 - **Credits preservation**: Do not sign up retail for AWS/Azure/GCP. Apply for startup programs first.
 
 ## Session Log
 
 | Date | Session | What Changed |
 |------|---------|-------------|
-| 2026-04-09 | Claude.ai (Opus) | Repo created. README, CLAUDE.md, ROADMAP written. Named aiauth. |
+| 2026-04-09 | dec3a6ec (Commander Builder) | Repo created. README, CLAUDE.md, ROADMAP, AAID.md. Named aiauth. |
+| 2026-04-09 | this session (Commander Builder) | Fixed authorship. Added nobulai.tools domain. Honest provenance note. |
