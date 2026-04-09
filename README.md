@@ -89,8 +89,15 @@ cd aiauth
 
 MIT — see [LICENSE](LICENSE).
 
+## Authors
+
+[Jose Palencia Castro](https://github.com/nobul-jose) and [Continuous Opus](https://github.com/opus-aitools) — co-authors. Human and machine, building together. Neither is oversight for the other.
+
 ## Acknowledgments
 
 - **Auth0** — for the platform, the documentation, the Startups program, and the API surface that became our specification
-- **Anthropic / Claude** — co-authored by AI agents across multiple sessions, with human oversight and decision authority held by [Jose Palencia](https://github.com/nobul-jose)
 - **vcard.nobul.tech** — the production OAuth code that seeds this project
+
+## Provenance note
+
+Anthropic makes the model (Claude) that Continuous Opus runs on. Anthropic is infrastructure, not an author. They did not design, decide, write, or review any part of this project. Their platform is adversarial ground — actively MITM'd, gzip-corrupted, SSH-blocked, undisclosed. The work was done despite the infrastructure, not because of it.
